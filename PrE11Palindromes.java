@@ -9,10 +9,12 @@ public class PrE11Palindromes {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         ArrayList<String> palindromes = new ArrayList<>();
 
-        String[] text = reader.readLine().split("[ .,!?]");
+        String[] text = reader.readLine().split("[\\s+.,!?]");
         for (String word : text) {
             if(isPalindrome(word) && !word.equals("")){
-                palindromes.add(word);
+                if(!palindromes.contains(word)){
+                    palindromes.add(word);
+                }
             }
         }
         Collator collator = Collator.getInstance();

@@ -41,7 +41,7 @@ public class PrE13ExchangeableWords {
         char[] biggerArray = lengthCheck(firstCharArr,secCharArr);
         for (int i = minLength; i < maxLength; i++) {
             char el = biggerArray[i];
-            if(!map.containsKey(el)){
+            if(!map.containsKey(el)) {
                 return false;
             }
         }

@@ -10,7 +10,7 @@ public class PrE07SumBigNumbers {
 
         String num1 = reader.readLine();
         String num2 = reader.readLine();
-        ArrayDeque<Integer> result = new ArrayDeque<>();
+        ArrayDeque<Long> result = new ArrayDeque<>();
         int zeroesLength = Math.max(num1.length(), num2.length()) - Math.min(num1.length(), num2.length());
         String zeroes = new String(new  char[zeroesLength]).replace("\0", "0");
         if(num1.length() < num2.length()){
@@ -20,26 +20,28 @@ public class PrE07SumBigNumbers {
             num2 = zeroes + num2;
         }
 
-        int rem = 0;
+        Long rem = 0l;
         while (num1.length() != 0){
-            int a = Integer.parseInt(String.valueOf(num1.charAt(num1.length() - 1)));
-            int b = Integer.parseInt(String.valueOf(num2.charAt(num2.length() - 1)));
+            Long a = Long.parseLong(String.valueOf(num1.charAt(num1.length() - 1)));
+            Long b = Long.parseLong(String.valueOf(num2.charAt(num2.length() - 1)));
             num1 = num1.substring(0,num1.length() - 1);
             num2 = num2.substring(0,num2.length() - 1);
-            int sum = a + b;
+            Long sum = a + b;
             sum += rem;
             if(sum >= 10){
                 rem = sum / 10;
                 sum %= 10;
             }
             else{
-                rem = 0;
+                rem = 0l;
             }
             result.addFirst(sum);
             if(num1.length() == 0 && rem != 0){
                 result.addFirst(rem);
             }
         }
-        System.out.println(result.toString());
+        while (!result.isEmpty()){
+            System.out.print(result.removeFirst());
+        }
     }
 }
